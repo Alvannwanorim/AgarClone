@@ -17,16 +17,28 @@ const draw = () => {
   // move the canvas/context to where the player is
   //   console.log(camX, camY);
   context.translate(camX, camY);
-  context.beginPath();
-  context.fillStyle = "rgb(255,0,0)";
-  context.arc(player.locX, player.locY, 10, 0, Math.PI * 2);
-  //   context.arc(200, 200, 10, 0, Math.PI * 2);
 
-  context.fill();
-  context.lineWidth = 3;
-  context.strokeStyle = "rgb(0,255,0)";
-  context.stroke();
+  // draw all players
+  // console.log(players);
+  players.forEach((p) => {
+    console.log(p.playerData);
+    context.beginPath();
+    context.fillStyle = p.playerData.color;
+    context.arc(
+      p.playerData.locX,
+      p.playerData.locY,
+      p.playerData.radius,
+      0,
+      Math.PI * 2
+    );
+    //   context.arc(200, 200, 10, 0, Math.PI * 2);
 
+    context.fill();
+    context.lineWidth = 3;
+    context.strokeStyle = "rgb(0,255,0)";
+    context.stroke();
+  });
+  // draw all the orbs
   orbs.forEach((orb) => {
     context.beginPath();
     context.fillStyle = orb.color;
@@ -68,17 +80,7 @@ canvas.addEventListener("mousemove", (event) => {
     console.log("Mouse is in the upper right quadrant");
   }
 
-  speed = 10;
-  xV = xVector;
-  yV = yVector;
-
-  if ((player.locX < 5 && xV < 0) || (player.locX > 500 && xV > 0)) {
-    player.locY -= speed * yV;
-  } else if ((player.locY < 5 && yV > 0) || (player.locY > 500 && yV < 0)) {
-    player.locX += speed * xV;
-  } else {
-    player.locX += speed * xV;
-    player.locY -= speed * yV;
-  }
   //   console.log(player);
+  player.xVector = xVector ? xVector : 0.1;
+  player.yVector = yVector ? yVector : 0.1;
 });

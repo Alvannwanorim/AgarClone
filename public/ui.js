@@ -10,6 +10,7 @@ console.log(wHeight, wWidth);
 
 const player = {};
 let orbs = [];
+let players = [];
 const loginModal = new bootstrap.Modal(document.querySelector("#loginModal"));
 const spawnMOdal = new bootstrap.Modal(document.querySelector("#spawnModal"));
 window.addEventListener("load", () => {
@@ -23,7 +24,7 @@ document.querySelector(".name-form").addEventListener("submit", (e) => {
   document.querySelector(".player-name").innerHTML = player.name;
   loginModal.hide();
   spawnMOdal.show();
-  console.log(player);
+  // console.log(player);
 });
 
 document.querySelector(".start-game").addEventListener("click", (e) => {

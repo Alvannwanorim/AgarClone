@@ -1,5 +1,6 @@
 class PlayerData {
   constructor(playerName, settings) {
+    // console.log(settings.worldHeight, settings.worldHeight);
     this.name = playerName;
     this.locX = Math.floor(settings.worldWidth * Math.random() + 10);
     this.locY = Math.floor(settings.worldHeight * Math.random() + 10);
@@ -7,6 +8,7 @@ class PlayerData {
     this.color = this.getRandomColor();
     this.score = 0;
     this.orbsAbsorbed = 0;
+    console.log(this.locX, this.locY);
   }
 
   getRandomColor() {
